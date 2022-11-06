@@ -5,7 +5,7 @@ def analyze():
     screenshot = ImageGrab.grab()
     im = screenshot.crop(rect)
     im = im.convert("L")
-    im.save('test992.png')
+    #im.save('test992.png')
     W, H = im.size
     pix = im.load()
     
@@ -47,9 +47,9 @@ def analyze():
             
     #print(len(BOXES), "chiffres trouvés")
     
-    for i, box in enumerate(BOXES):
-        chiffre = im.crop(box)
-        chiffre.save(str(i)+'.png')
+    #for i, box in enumerate(BOXES):
+    #    chiffre = im.crop(box)
+    #    chiffre.save(str(i)+'.png')
     
     def vertical(i, chiffre, pix): #Déterminer où sont les pixels sur la ligne verticale
         '''
