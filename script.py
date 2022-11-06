@@ -5,7 +5,7 @@ def analyze():
     screenshot = ImageGrab.grab()
     im = screenshot.crop(rect)
     im = im.convert("L")
-    #im.save('test992.png')
+    im.save('test992.png')
     W, H = im.size
     pix = im.load()
     
@@ -16,7 +16,7 @@ def analyze():
         im = ImageOps.invert(im) #On inverse l'image
         pix = im.load()
         fond = pix[0,0]
-        print("Image négativée")
+        #print("Image négativée")
     
     BOXES = []
     gauche = 0
@@ -47,9 +47,9 @@ def analyze():
             
     #print(len(BOXES), "chiffres trouvés")
     
-    #for i, box in enumerate(BOXES):
-     #   chiffre = im.crop(box)
-     #   chiffre.save(str(i)+'.png')
+    for i, box in enumerate(BOXES):
+        chiffre = im.crop(box)
+        chiffre.save(str(i)+'.png')
     
     def vertical(i, chiffre, pix): #Déterminer où sont les pixels sur la ligne verticale
         '''
@@ -246,7 +246,7 @@ def button_release(event):
     top.destroy()
     FRAME.destroy()
     root.wm_state('iconic')
-    st = time.time()
+    #st = time.time()
     threading.Thread(target=boucle, daemon=True).start()
 
 count = 0
@@ -254,9 +254,9 @@ def boucle():
     global count
     analyze()
     count+=1
-    if count == 30:
-        print(time.time()-st, f'secondes pour faire {count} recherches')
-        return
+    #if count == 30:
+    #    print(time.time()-st, f'secondes pour faire {count} recherches')
+    #    return
     boucle()
 
 import tkinter as tk
