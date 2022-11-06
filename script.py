@@ -200,10 +200,9 @@ def analyze():
 
 x0, y0, x1, y1 = 0, 0, 0, 0
 def start(event):
-    global FRAME, x0, y0, top, st, count
+    global FRAME, x0, y0, top#, count, st
     x0, y0 = event.x, event.y
-    count = 0
-    st = 0
+    #count, st = 0, 0
     try:
         FRAME.destroy()
     except:
@@ -239,9 +238,9 @@ def release(event):
 def leave(event):
     root.wm_state('iconic')
     
-st = 0
+#st = 0
 def button_release(event):
-    global rect, st
+    global rect#, st
     rect = (x0, y0, x1, y1)
     top.destroy()
     FRAME.destroy()
@@ -249,15 +248,15 @@ def button_release(event):
     #st = time.time()
     threading.Thread(target=boucle, daemon=True).start()
 
-count = 0
+#count = 0
 def boucle():
-    global count
-    analyze()
-    count+=1
+    #global count
+    while True:
+        analyze()
+        #count+=1
     #if count == 30:
     #    print(time.time()-st, f'secondes pour faire {count} recherches')
     #    return
-    boucle()
 
 import tkinter as tk
 import tkinter.ttk as ttk
